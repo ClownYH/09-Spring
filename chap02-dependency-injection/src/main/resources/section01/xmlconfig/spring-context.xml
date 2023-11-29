@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 생성자 기반 -->
+    <bean id="account" class="com.ohgiraffers.common.PersonalAccount">
+         <constructor-arg index="0" value="20"/>
+        <constructor-arg index="1" value="110-234-567890"/>
+    </bean>
+
+    <!-- setter 기반 -->
+    <bean id="member" class="com.ohgiraffers.common.MemberDTO">
+        <property name="seq" value="1"/>
+        <property name="name" value="홍길동"/>
+        <property name="phone" value="010-5080-1541"/>
+        <property name="email" value="hong@gmail.com"/>
+        <property name="personalAccount" ref="account"/>
+    </bean>
+
+    <!-- 이렇게 bean을 미리 생성해놓는 것까지가 IOC, ref로 bean을 참고해오도록 하는 것까지가 DI(이미 만들어진 것을 추가해주는 것으로 볼 수 있음) -->
+    <!-- DTO dto = new DTO(내용, 내용, new DTO) 라고 하면 첫번째 new 까지가 IOC, 내부에 새로운 new를 참고하는 것은 DI라고 할 수 있음 -->
+
+
+</beans>
